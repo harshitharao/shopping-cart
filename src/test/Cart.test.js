@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 
 import Cart from '../js/Cart';
 
@@ -28,5 +29,15 @@ describe('cart', () => {
     const wrapper = shallow(<Cart selectedProducts={selectedProducts}/>);
     expect(wrapper.find('li')).toHaveLength(5);
     expect(wrapper.find('p').text()).toEqual('Total: 199.95');
+  });
+
+  it('should match the cart snapshot when cart is empty', () => {
+    const cartTree = renderer.create(<Cart selectedProducts={[]}/>);
+    expect(cartTree.toJSON()).toMatchSnapshot();
+  });
+
+  it('should match the cart snapshot when cart is has products', () => {
+    const cartTree = renderer.create(<Cart selectedProducts={[{ name: 'Dove Soap', price: 39.99}]}/>);
+    expect(cartTree.toJSON()).toMatchSnapshot();
   });
 });

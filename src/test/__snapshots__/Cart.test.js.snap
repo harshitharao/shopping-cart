@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cart should match the cart snapshot when cart is empty 1`] = `
+<div>
+  <ul />
+  <p>
+    Total: 
+    0.00
+  </p>
+</div>
+`;
+
+exports[`cart should match the cart snapshot when cart is has products 1`] = `
+<div>
+  <ul>
+    <li>
+      Dove Soap
+        
+      39.99
+    </li>
+  </ul>
+  <p>
+    Total: 
+    39.99
+  </p>
+</div>
+`;
